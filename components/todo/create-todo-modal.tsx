@@ -44,7 +44,7 @@ const CreateTodoModal = ({ onClose, isOpen }: Props) => {
   const initialFocusRef = useRef<HTMLInputElement | null>(null);
   const createTodo = useCreateTodo();
   const toast = useToast();
-  const { ref: registerTodoRef, ...registerTodorest } = register('todo');
+  const { ref: registerTodoRef, ...registerTodoRest } = register('todo');
 
   const onCreateTodo = async (data: FormValuesProps) => {
     try {
@@ -81,7 +81,7 @@ const CreateTodoModal = ({ onClose, isOpen }: Props) => {
                 registerTodoRef(e);
                 initialFocusRef.current = e;
               }}
-              {...registerTodorest}
+              {...registerTodoRest}
             />
             <FormErrorMessage>{!!errors.todo && errors.todo.message}</FormErrorMessage>
           </FormControl>

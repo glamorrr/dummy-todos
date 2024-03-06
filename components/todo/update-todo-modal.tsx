@@ -58,9 +58,9 @@ const UpdateTodoModal = ({ onClose, isOpen, todo }: Props) => {
   const initialFocusRef = useRef<HTMLInputElement | null>(null);
   const updateTodo = useUpdateTodo();
   const toast = useToast();
-  const { ref: registerTodoRef, ...registerTodorest } = register('todo');
+  const { ref: registerTodoRef, ...registerTodoRest } = register('todo');
 
-  const onCreateTodo = async (data: FormValuesProps) => {
+  const onUpdatetodo = async (data: FormValuesProps) => {
     try {
       await updateTodo.mutateAsync({ id: todo?.id as number, data });
       toast({
@@ -94,7 +94,7 @@ const UpdateTodoModal = ({ onClose, isOpen, todo }: Props) => {
   return (
     <Modal onClose={onClose} isOpen={isOpen} initialFocusRef={initialFocusRef}>
       <ModalOverlay />
-      <ModalContent as="form" onSubmit={handleSubmit(onCreateTodo)}>
+      <ModalContent as="form" onSubmit={handleSubmit(onUpdatetodo)}>
         <ModalHeader>Update todo</ModalHeader>
         <ModalCloseButton />
         <ModalBody pb={6} as={Stack} spacing={6}>
@@ -106,7 +106,7 @@ const UpdateTodoModal = ({ onClose, isOpen, todo }: Props) => {
                 registerTodoRef(e);
                 initialFocusRef.current = e;
               }}
-              {...registerTodorest}
+              {...registerTodoRest}
             />
             <FormErrorMessage>{!!errors.todo && errors.todo.message}</FormErrorMessage>
           </FormControl>
